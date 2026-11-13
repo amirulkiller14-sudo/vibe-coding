@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ObsidianGamesAdminTool</AssemblyName>
+    <RootNamespace>ObsidianGames.AdminTool</RootNamespace>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <AssemblyTitle>OBSIDIAN GAMES ADMIN TOOL</AssemblyTitle>
+    <Product>OBSIDIAN GAMES ADMIN TOOL</Product>
+    <Company>Obsidian Games</Company>
+    <Copyright>Obsidian Games</Copyright>
+    <Version>1.0.0</Version>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+
+    <!-- Single portable exe: bundle everything into one file.
+         Only NATIVE libraries are extracted to %TEMP% (WebView2Loader.dll);
+         managed assemblies are loaded straight from the bundle, which keeps
+         runtime extraction small instead of dumping ~146 MB per launch. -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DebugType>none</DebugType>
+    <!-- Keep the output folder clean: no .pdb/.xml sidecar files. -->
+    <AllowedReferenceRelatedFileExtensions>None</AllowedReferenceRelatedFileExtensions>
+
+    <!-- Do not scatter build output all over the project folder. -->
+    <BaseOutputPath>bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3405.78" />
+  </ItemGroup>
+
+</Project>
