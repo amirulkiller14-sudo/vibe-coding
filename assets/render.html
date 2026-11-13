@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin:0; padding:0; background:transparent; overflow:hidden; width:100%; height:100%; }
+  #logo { display:block; position:absolute; left:0; top:0; }
+</style>
+</head>
+<body>
+  <img id="logo" src="LOGO_FILE">
+  <script>
+    // Renders the logo scaled to exactly WxH (stretch) so the screenshot
+    // window and the artwork line up precisely.
+    const img = document.getElementById('logo');
+    const p = new URLSearchParams(location.search);
+    const W = Number(p.get('w') || 0);
+    const H = Number(p.get('h') || 0);
+    const fit = () => {
+      if (W && H) {
+        img.style.width = W + 'px';
+        img.style.height = H + 'px';
+      }
+      document.title = 'ready';
+    };
+    if (img.complete) fit(); else img.addEventListener('load', fit);
+  </script>
+</body>
+</html>
